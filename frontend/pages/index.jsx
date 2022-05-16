@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default function IndexPage() {
-  return <div>IndexPage</div>;
+  return <p>IndexPage</p>;
 }
