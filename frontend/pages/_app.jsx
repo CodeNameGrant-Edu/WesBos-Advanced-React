@@ -3,8 +3,6 @@ import NProgress from 'nprogress';
 import Router from 'next/Router';
 import Page from '../components/Page';
 
-// TODO, swap with own
-// import 'nprogress/nprogress.css';
 import '../components/styles/nprogress.css';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
