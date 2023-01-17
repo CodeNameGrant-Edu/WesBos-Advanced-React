@@ -1,5 +1,5 @@
 import { cloudinaryImage } from '@keystone-next/cloudinary';
-import { text, select, integer } from '@keystone-next/fields';
+import { text, relationship } from '@keystone-next/fields';
 import { list } from '@keystone-next/keystone/schema';
 
 export const cloudinary = {
@@ -16,6 +16,12 @@ export const ProductImage = list({
       cloudinary,
       label: 'source'
     }),
-    altText: text()
+    altText: text(),
+    product: relationship({ ref: 'Product.photo' })
+  },
+  ui: {
+    listView: {
+      initialColumns: ['image', 'altText', 'product']
+    }
   }
 });
