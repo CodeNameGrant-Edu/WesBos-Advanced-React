@@ -1,5 +1,10 @@
 import React from 'react';
+import Products from '../components/Products';
 
-export default function ProjectsPage() {
-  return <div>ProjectsPage</div>;
+export default function ProductsPage() {
+  return (
+    <div>
+      <Products />
+    </div>
+  );
 }
