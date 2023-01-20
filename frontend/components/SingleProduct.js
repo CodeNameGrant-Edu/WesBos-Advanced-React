@@ -3,8 +3,8 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import DisplayError from './ErrorMessage';
 
-const GET_PRODUCT = gql`
-  query GetProduct($id: ID!) {
+const SINGLE_PRODUCT_QUERY = gql`
+  query SingleProductQuery($id: ID!) {
     product: Product(where: { id: $id }) {
       name
       price
@@ -36,7 +36,7 @@ const ProductStyles = styled.div`
 `;
 
 export default function SingleProduct({ id }) {
-  const { data, loading, error } = useQuery(GET_PRODUCT, {
+  const { data, loading, error } = useQuery(SINGLE_PRODUCT_QUERY, {
     variables: { id }
   });
 
