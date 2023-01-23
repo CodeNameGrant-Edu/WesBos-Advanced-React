@@ -7,7 +7,7 @@ import DisplayError from './ErrorMessage';
 import { perPage } from '../config';
 
 const PRODUCT_COUNT_QUERY = gql`
-  query {
+  query ProductCount {
     _allProductsMeta {
       count
     }

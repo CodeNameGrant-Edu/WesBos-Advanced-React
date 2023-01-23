@@ -5,12 +5,13 @@ import Products from '../../components/Products';
 
 export default function ProductsPage() {
   const { query } = useRouter();
+  const page = parseInt(query.page) || 1;
 
   return (
     <div>
-      <Pagination page={parseInt(query.page) || 1} />
-      <Products />
-      <Pagination page={parseInt(query.page) || 1} />
+      <Pagination page={page} />
+      <Products page={page} />
+      <Pagination page={page} />
     </div>
   );
 }
