@@ -8,7 +8,7 @@ export default function paginationField() {
 
     // Runs when Apollo queries the cache for data to serve
     read(existing = [], { args, cache }) {
-      console.log('read', { existing, args, cache });
+      // console.log('read', { existing, args, cache });
       const { skip, first } = args;
 
       const data = cache.readQuery({ query: PAGINATION_QUERY });
@@ -41,9 +41,9 @@ export default function paginationField() {
 
     // Runs when apollo client comes back from network with items
     merge(existing, incoming, { args }) {
-      console.log('merge', { existing, incoming, args });
+      // console.log('merge', { existing, incoming, args });
       const merged = existing ? existing.slice(0) : [];
-      const { skip, first } = args;
+      const { skip } = args;
 
       for (let i = skip; i < skip + incoming.length; ++i) {
         merged[i] = incoming[i - skip];
