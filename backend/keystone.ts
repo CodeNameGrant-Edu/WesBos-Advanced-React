@@ -6,6 +6,7 @@ import { ProductImage } from './schemas/ProductImage';
 import { createAuth } from '@keystone-next/auth';
 import { withItemData, statelessSessions } from '@keystone-next/keystone/session';
 import { insertSeedData } from './seed-data';
+import { sendPasswordResetEmail } from './lib/mail';
 
 const databaseURL = process.env.DATABASE_URL;
 
@@ -23,8 +24,8 @@ const { withAuth } = createAuth({
     // TODO: add initial roles
   },
   passwordResetLink: {
-    async sendToken(args) {
-      console.log(args);
+    async sendToken({ identity, token }) {
+      await sendPasswordResetEmail(token, identity);
     }
   }
 });
