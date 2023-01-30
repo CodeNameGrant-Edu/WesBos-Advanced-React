@@ -1,5 +1,4 @@
-import { useRouter } from 'next/dist/client/router';
-import React from 'react';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import SignIn from '../components/SignIn';
 import SignUp from '../components/SignUp';
@@ -18,6 +17,7 @@ export default function SignInPage() {
   if (user) {
     router.push('/account');
   }
+
   return (
     <GridStyles>
       <SignIn />
