@@ -1,4 +1,4 @@
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 import React from 'react';
 import Pagination from '../../components/Pagination';
 import Products from '../../components/Products';
