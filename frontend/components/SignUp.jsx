@@ -1,10 +1,8 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
-import { useRouter } from 'next/dist/client/router';
 import useForm from '../lib/useForm';
-import Form from './styles/Form';
-import { CURRENT_USER_QUERY } from './User';
 import DisplayError from './ErrorMessage';
+import Form from './styles/Form';
 
 const SIGN_UP_MUTATION = gql`
   mutation SignUp($email: String!, $name: String!, $password: String!) {
@@ -17,7 +15,6 @@ const SIGN_UP_MUTATION = gql`
 `;
 
 export default function SignUp() {
-  const router = useRouter();
   const { inputs, handleChange, resetForm } = useForm({
     email: '',
     password: '',
@@ -35,11 +32,6 @@ export default function SignUp() {
     await signUp().catch(console.error);
     resetForm();
   };
-
-  // const error =
-  //   data?.authenticateUserWithPassword.__typename === 'UserAuthenticationWithPasswordFailure'
-  //     ? data?.authenticateUserWithPassword
-  //     : undefined;
 
   return (
     <Form method="POST" onSubmit={onSubmitHandler}>
