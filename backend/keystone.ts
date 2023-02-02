@@ -8,6 +8,7 @@ import { createAuth } from '@keystone-next/auth';
 import { withItemData, statelessSessions } from '@keystone-next/keystone/session';
 import { insertSeedData } from './seed-data';
 import { sendPasswordResetEmail } from './lib/mail';
+import { extendGraphqlSchema } from './mutations';
 
 const databaseURL = process.env.DATABASE_URL;
 
@@ -56,6 +57,7 @@ const keystoneConfig = config({
     ProductImage,
     CartItem
   }),
+  extendGraphqlSchema: extendGraphqlSchema,
   ui: {
     // Only show for users that pass test
     isAccessAllowed: ({ session }) => {
