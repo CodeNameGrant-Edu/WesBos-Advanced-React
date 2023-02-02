@@ -1,20 +1,22 @@
 import styled from 'styled-components';
 import CartStyles from './styles/CartStyles';
+import CloseButton from './styles/CloseButton';
 import Supreme from './styles/Supreme';
 import { useUser } from './User';
 import formatMoney from '../lib/formatMoney';
 import calcTotalPrice from '../lib/calcTotalPrice';
+import { useCart } from '../lib/cartState';
 
 export default function Cart() {
   const user = useUser();
+  const { isOpen, toggleCart } = useCart();
   if (!user) return null;
 
-  console.log(user);
-
   return (
-    <CartStyles open>
+    <CartStyles open={isOpen}>
       <header>
         <Supreme>{user.name}'s Cart</Supreme>
+        <CloseButton onClick={toggleCart}>&times;</CloseButton>
       </header>
 
       <ul>
