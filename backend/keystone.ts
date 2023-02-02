@@ -2,6 +2,7 @@ import 'dotenv/config';
 import { config, createSchema } from '@keystone-next/keystone/schema';
 import { User } from './schemas/User';
 import { Product } from './schemas/Product';
+import { CartItem } from './schemas/CartItem';
 import { ProductImage } from './schemas/ProductImage';
 import { createAuth } from '@keystone-next/auth';
 import { withItemData, statelessSessions } from '@keystone-next/keystone/session';
@@ -52,7 +53,8 @@ const keystoneConfig = config({
     // Schema Items go here
     User,
     Product,
-    ProductImage
+    ProductImage,
+    CartItem
   }),
   ui: {
     // Only show for users that pass test
