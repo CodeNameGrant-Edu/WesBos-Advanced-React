@@ -28,7 +28,9 @@ const BigButton = styled.button`
 export default function RemoveFromCart({ id }) {
   const [removeFromCart, { loading }] = useMutation(REMOVE_FROM_CART_MUTATION, {
     variables: { id },
-    refetchQueries: [CURRENT_USER_QUERY]
+    update: (cache, payload) => {
+      cache.evict(cache.identify(payload.data.deleteCartItem));
+    }
   });
 
   return (
