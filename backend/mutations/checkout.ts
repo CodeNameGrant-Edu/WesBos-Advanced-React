@@ -46,10 +46,6 @@ export default async function checkout(
 
   const cartItems = user.cart.filter((cartItem) => cartItem.product);
 
-  // const amount = cartItems.reduce(function (tally: number, cartItem: CartItemCreateInput) {
-  //   return tally + cartItem.quantity * cartItem.product.price;
-  // });
-
   const amount = cartItems.reduce(
     (tally, cartItem) => tally + cartItem.quantity * cartItem.product.price,
     0
@@ -70,7 +66,7 @@ export default async function checkout(
       throw new Error(err.message);
     });
 
-  console.log({ charge });
+  // console.log({ charge });
 
   // 4. convert cartitems to orderitems
   const orderItems = cartItems.map((cartItem) => ({
@@ -96,7 +92,7 @@ export default async function checkout(
   });
 
   // 6. Clean up cart Items
-  const cartItemIds = cartItems.map((item) => item.id);
+  const cartItemIds = user.cart.map((item) => item.id);
   await context.lists.CartItem.deleteMany({
     ids: cartItemIds
   });
