@@ -70,6 +70,8 @@ export default async function checkout(
       throw new Error(err.message);
     });
 
+  console.log({ charge });
+
   // 4. convert cartitems to orderitems
   // 5. create order and return it to save
 }
